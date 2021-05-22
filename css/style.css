@@ -1,0 +1,130 @@
+.pad0
+{
+padding:0px;
+}
+
+.pad10
+{
+	padding:10px;
+}
+
+.padTop20
+{
+	
+padding:10px;	
+}
+.sliderayarla
+{
+	max-height:400px;
+	width:100%;
+}
+.headerayarla{
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:100px;
+  background-color:#66CCFF;
+}
+.yaziayarla
+{
+  font-size:25px;
+  text-align:center;
+  color:black;
+  
+}
+.navbar-inverse .navbar-nav>li>a{
+ color:black;
+}
+.ayar
+{
+	font-size:35px;
+	padding-right:200px;
+}
+.arkaplan{
+	background-color:#66CCFF;
+	
+}
+.footerayarla{
+	
+   
+   width:100%;
+   height:60px;   
+   color:black;
+   bottom:0px;
+   padding-left:0px;
+   padding-top:60px;
+   
+}
+.padayar{
+	padding:10px;
+	border:0px;
+	font-size:20px;
+}
+.balikayar
+{
+	 float:left !important;
+	padding-right:10px;
+	padding-left:5px;
+	
+}
+
+.dene1{
+	background-color:red;
+	height:500px;
+}
+.telayar
+{
+	color:black;
+	font-size:20px;
+	padding-top:10px;
+	padding-right:10px;
+}
+.mailayar
+{
+	color:black;
+	font-size:18px;
+	padding-top:10px;
+	padding-right:10px;
+}
+.adresayar{
+	color:black;
+	font-size:16px;
+	padding-top:10px;
+	padding-right:10px;
+	
+}
+.isim{
+	
+	color:black;
+	font-size:20px;
+	padding-top:50px;
+	padding-right:10px;
+	
+}
+.dokumanresim{
+	
+	max-height:130px;
+	width:28%;
+	padding:10px;
+}
+.resim-boyut{
+	height:1000px;
+	width:200px;
+}
+.resimPad
+{
+	padding:100px;
+}
+.kutuayar
+{
+	width: 300px;
+    height: 550px;
+    background:#d8d8d8;
+    box-sizing: border-box;
+}
+.renkayar
+{
+	color:black;
+}
+.pad-ayar{
+	padding-top:100px;
+}

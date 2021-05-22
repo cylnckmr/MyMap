@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>İşaretçi Kaldırma  Silme Gizleme</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #harita {
+        height: 100%;
+      }
+      #panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="panel">
+      <input onclick="isaretciGizle();" type=button value="İşaretçileri Gizle">
+      <input onclick="isaretciGoster();" type=button value="Bütün İşaretçileri Göster">
+      <input onclick="isaretciSil();" type=button value="İşaretçi Sil">
+    </div>
+    <div id="harita"></div>
+    <p>İşaretçi Eklemek İçin Tıkla</p>
+    <script>
+       //
+      // Kullanıcı harita üzerinde hartitaya tıklandığında bir işaretçi eklenecek ve işaretçileri,
+     // bir diziye alıp ordan gizleme silme ve gösterme işlemleri yapama uygulamsı
+
+      var harita;
+      var isaretciler = [];
+
+      function haritaBasla() {
+        var enlemBoylam = {lat:39.233578, lng: 42.863303};
+
+        harita = new google.maps.Map(document.getElementById('harita'), {
+          zoom: 12,
+          center: enlemBoylam,
+          mapTypeId: 'terrain'
+        });
+
+        // Tıklandığında işaretçi eklemesi için bir tane dinleyeci ekledim
+        harita.addListener('click', function(event) {
+          isaretciEkle(event.latLng);
+        });
+
+        // haritanın merkezine işaretçi ekledim
+        isaretciEkle(enlemBoylam);
+      }
+
+      // haritadaki işaretçileri diziye atar.
+      function isaretciEkle(location) {
+        var isaretci = new google.maps.Marker({
+          position: location,
+          map: harita
+        });
+        isaretciler.push(isaretci);
+      }
+
+      // Dizideki bütün işaretçiler için haritayı ayarlıyor
+      function haritayaIsaretciGonder(harita) {
+        for (var i = 0; i < isaretciler.length; i++) {
+          isaretciler[i].setMap(harita);
+        }
+      }
+
+      // İşaretçileri haritada siliyor ama dizide tutuyor
+      function isaretciGizle() {
+        haritayaIsaretciGonder(null);
+      }
+
+      // Dizinin içerisindeki işaretçileri gösterir.
+      function isaretciGoster() {
+        haritayaIsaretciGonder(harita);
+      }
+
+      //işaretçileri harita ve dizden siliyor
+      function isaretciSil() {
+        isaretciGizle();
+        isaretciler = [];
+      }
+    </script>
+    <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByDbxiNsk8J_KIRG_jNSQDkTCOsRl5EaU&callback=haritaBasla">
+    </script>
+  </body>
+</html>

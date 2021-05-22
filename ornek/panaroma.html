@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sokak Görünümü</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #harita, #pano {
+        float: left;
+        height: 100%;
+        width: 45%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="harita"></div>
+    <div id="pano"></div>
+    <script>
+           //
+		   // Harita gösterilen yerin sokak görüntüsü
+      function haritaBasla() {
+        var enlemBoylam = {lat: 39.233578, lng: 42.863303};
+        var harita = new google.maps.Map(document.getElementById('harita'), {
+          center: enlemBoylam,
+          zoom: 14
+        });
+        var sokakGorunumu = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), {
+              position: enlemBoylam,
+             
+            });
+        harita.setStreetView(sokakGorunumu);
+      }
+    </script>
+    <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByDbxiNsk8J_KIRG_jNSQDkTCOsRl5EaU&callback=haritaBasla">
+    </script>
+  </body>
+</html>

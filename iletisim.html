@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>MyMap</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	
+    <!-- ek stiller -->
+    <link href="css/style.css" rel="stylesheet">
+
+   
+  </head>
+  
+  <body class="arkaplan">
+ <!--MENÜ ÇUBUĞU--(menü çubuğu için getbootstrap.com/component/navbar)-->
+ 
+ <header class="navbar navbar-inverse headerayarla"><!-- bu bir navbar manü çubuğunu kullanacağımı ve renginin navbar default olacağını söylüyor.-->
+  <div class="container"><!-- menü çubuğunun nasıl yayılacağını gösteriyor..-->
+ 
+    <div class="navbar-header"><!--bu div açma kapama kısmı ise yani akıllı tlf ,tabletlerde gösterimi düzenliyor-->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><!--toggle ve collapse javascripte fonksiyonlarını gösteren seçeneklerdir-->
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span><!--bu üç ikon çizgi sağlamaya yarıyor--javascripte çalışan bir kısımdır..-->
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> 
+
+      <a class="navbar-brand pad0 balikayar" href="index.html">
+	  <img src="resimler\balık.jpg"  title="ceylan Çakmar" width="50px" height="50px" class="img-circle"><!--circle yuvarlak olmasını sağlıyor-->
+	  
+	  </a>
+     <span class="navbar-brand ayar padTop20" href="index.html"><i>My</i><strong>Map</strong> </span>
+   </div>
+	
+
+    <!-- menüdeki bölümler -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav yaziayarla">
+      
+           <li><a class="yaziayarla"href="index.html">Anasayfa</a></li>
+	       
+		   <li><a class="yaziayarla"href="dokuman.html">Dökümanlar</a></li> 
+       
+		   <li><a class="yaziayarla"href="iletisim.html">İletişim</a></li>
+        
+      </ul>
+     
+     
+	  
+	 
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</header>
+ 
+ 
+  <div class="container">
+      <div class="row">
+	     <div class="col-md-3">
+		 <a class="telayar"><span class="  glyphicon glyphicon-user isim"> Ceylan ÇAKMAR</span></a>
+		 <a class="telayar"><span class="glyphicon glyphicon-earphone telayar"> 0505-385-12-11</span></a>
+		 <a class="telayar"><span class="glyphicon glyphicon-envelope mailayar"> cakmarceylan@gmail.com</span></a>
+		 <a class="telayar"><span class=" glyphicon glyphicon-home adresayar"> Eskikonak Köyü/Patnos/AĞRI </span></a>
+		  
+		 </div>
+		 <div class="col-md-9">
+		  
+        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'>
+		</script>
+		<div style='overflow:hidden;height:440px;width:900px;'>
+		  <div id='harita-ayar' style='height:440px;width:900px;'></div>
+	       <style>#harita-ayar img{max-width:none!important;background:none!important}</style>
+	      </div><script type='text/javascript'>
+		  function haritaBasla()
+		  {
+		  var haritaAyar = {
+		  zoom:10,
+		  center:new google.maps.LatLng(39.2084,42.87170000000003),
+		  mapTypeId: google.maps.MapTypeId.ROADMAP};
+		  map = new google.maps.Map(document.getElementById('harita-ayar'),haritaAyar);
+		  
+		  isaretci = new google.maps.Marker({map: map,position: new google.maps.LatLng(39.2084,42.87170000000003)});
+		  
+		  bilgiPenceresi = new google.maps.InfoWindow({content:'<strong>Adres</strong><br>Eskikonak köyü,Patnos,Ağrı<br>'});
+		  
+		  google.maps.event.addListener(isaretci, 'click', function(){bilgiPenceresi.open(map,isaretci);});
+		  
+		  bilgiPenceresi.open(map,harita);}
+		  
+		  google.maps.event.addDomListener(window, 'load', haritaBasla);
+		  </script>
+	  </div>
+   
+  
+ </div>
+
+  <!-- jQuery -->
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <!-- bootstrap-->
+    <script src="js/bootstrap.min.js"></script>
+ 
+  </body>
+</html>
+
+
+
+
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Adresler Arası Rota</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #harita {
+        height: 100%;
+      }
+      #panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="panel">
+    <b>Başlangıç: </b>
+    <select id="basla">
+	<option value="Fatih istanbul Turkey">İstanbul,Fatih</option>
+      <option value="Ankara, Turkey">Ankara</option>
+      <option value="izmir, Turkey">İzmir</option>
+      <option value="İstanbul, Turkey">İstanbul</option>
+      <option value="patnos,ağrı,Turkey">patnos</option>
+      <option value="Ağrı,Turkey">Ağrı</option>
+      <option value="Van,Turkey">Van</option>
+      <option value="Adıyaman,Turkey">Adıyaman</option>
+      <option value="Antalya,Turkey">Antalya</option>
+      <option value="Adana,Turkey">Adana</option>
+      <option value="Edirne,Turkey">Edirne</option>
+      <option value="doğubeyazıt,ağrı,Turkey">Ağrı,Doğubeyazıt</option>
+
+    </select>
+    <b>Bitiş: </b>
+    <select id="son">
+	
+	<option value="Başakşehir,istanbul,Turkey">İstanbul,Başakşehir</option>
+      <option value="Ağrı, Turkey">Ağrı</option>
+      <option value="Bursa,Turkey">Bursa</option>
+      <option value="Sakarya,Turkey">Sakarya</option>
+      <option value="Çanakkale,Turkey">Çanakkale</option>
+      <option value="Eskişehir,Turkey">Eskişehir</option>
+      <option value="Patnos,Ağrı,Turkey">Ağrı,Patnos</option>
+      <option value="Samsun,Turkey">Samsun</option>
+      <option value="Iğdır,Turkey">Iğdır</option>
+      <option value="Erciş,Van,Turkey">Van,Erciş</option>
+      <option value="Avcılar,istanbul,Turkey">Avcılar,istanbul</option>
+      <option value="Nevşehir,Turkey">Nevşehir</option>
+    </select>
+    </div>
+    <div id="harita"></div>
+    <script>
+      function haritaBasla() {
+        var yolServisi = new google.maps.DirectionsService;
+        var yolGorunumu = new google.maps.DirectionsRenderer;
+        var harita = new google.maps.Map(document.getElementById('harita'), {
+          zoom: 7,
+          center: {lat: 38.963745, lng: 35.243322}
+        });
+        yolGorunumu.setMap(harita);
+
+        var yolDegistiginde = function() {
+          rotaGorunumuHesaplama(yolServisi, yolGorunumu);
+        };
+        document.getElementById('basla').addEventListener('change', yolDegistiginde);
+        document.getElementById('son').addEventListener('change', yolDegistiginde);
+      }
+
+      function rotaGorunumuHesaplama(yolServisi, yolGorunumu) {
+        yolServisi.route({
+          origin: document.getElementById('basla').value,
+          destination: document.getElementById('son').value,
+          travelMode: 'DRIVING'
+        }, function(yanit, durum) {
+          if (durum === 'OK') {
+            yolGorunumu.setDirections(yanit);
+          } else {
+            window.alert('Rota Bulunamadı.' + durum);
+          }
+        });
+      }
+    </script>
+    <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByDbxiNsk8J_KIRG_jNSQDkTCOsRl5EaU&callback=haritaBasla">
+    </script>
+  </body>
+</html>

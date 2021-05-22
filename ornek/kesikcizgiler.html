@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Kesikli Çizgiler</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #harita {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="harita"></div>
+    <script>
+	  //
+      // Belirtilen İki nokta arasındaki mesafeyi kesikli çizgiler ile belirten uygulama
+	  
+
+      function haritaBasla() {
+        var harita = new google.maps.Map(document.getElementById('harita'), {
+          zoom: 8,
+          center: {lat: 39.719074, lng:43.050591 },
+          mapTypeId: 'terrain'
+        });
+
+        // iki nokta arasında mesafeyi belirtmek için bir sembol belirledim(kesikli çizgi)
+        var kesikliCizgi = {
+          path: 'M 0,-1 0,1',
+          strokeOpacity: 1,
+          scale: 4
+        };
+
+        // iki nokta arasında sembolu oluşturdum ve 20px aralıklarla sembolu tekrarlattım
+        
+        var cizgi = new google.maps.Polyline({
+          path: [{lat: 39.719074 , lng:43.050591 }, {lat: 39.233578, lng:42.863303 }],
+          strokeOpacity: 0,
+          icons: [{
+            icon: kesikliCizgi,
+
+            repeat: '20px'
+          }],
+          map: harita
+        });
+      }
+    </script>
+    <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByDbxiNsk8J_KIRG_jNSQDkTCOsRl5EaU&callback=haritaBasla">
+    </script>
+  </body>
+</html>

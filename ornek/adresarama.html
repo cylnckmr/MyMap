@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Adres Arama</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #harita-ayar {
+        height: 100%;
+      }
+      .kontrol-ayar {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #arama-kutusu-ayar {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+      }
+
+      #arama-kutusu-ayar:focus {
+        border-color: #4d90fe;
+      }
+
+   
+    </style>
+  </head>
+  <body>
+    <input id="arama-kutusu-ayar" class="kontrol-ayar" type="text" placeholder="Arama Kutusu">
+    <div id="harita-ayar"></div>
+    <script>
+	    //
+       //metin kutusuna girilen adresi bulma ve işaretçi ekleme uygulaması
+
+      function haritaBasla() {
+        var harita = new google.maps.Map(document.getElementById('harita-ayar'), {
+          center: {lat: 39.933363, lng: 32.859742},
+          zoom: 8,
+          mapTypeId: 'roadmap'
+        });
+
+        // arama yapabilmek için bir tane metin kutusu ekliyorum
+        var giris = document.getElementById('arama-kutusu-ayar');
+        var aramaKutusu = new google.maps.places.SearchBox(giris);
+        harita.controls[google.maps.ControlPosition.TOP_LEFT].push(giris);
+
+        // arama kutusundaki sonuçları haritada gösterme
+        harita.addListener('bounds_changed', function() {
+          aramaKutusu.setBounds(harita.getBounds());
+        });
+
+        var isaretci = [];
+        // kullanıcı arama kutusuna birşey girdiği zaman onla ilgili tahminleri getiriyor.
+        aramaKutusu.addListener('places_changed', function() {
+          var yer = aramaKutusu.getPlaces();
+
+          if (yer.length == 0) {
+            return;
+          }
+
+          // Yeni bir yer girdiğinde eski işaretçiyi siliyor.
+          isaretci.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          isaretci = [];
+
+          // Girilen yer için ikon,konum ad bilgilerini getiriyor.
+          var konumSinir = new google.maps.LatLngBounds();
+          yer.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Aradığınız yer bulunamadı.Lütfen yeni yer giriniz.");
+              return;
+            }
+            var ikon = {
+              url: place.ikon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Girilen yer için yeni işaretçi oluşturuyor
+            isaretci.push(new google.maps.Marker({
+              map: harita,
+              icon: ikon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Girilen yerin coğrafi kodları ve görünümü
+              konumSinir.union(place.geometry.viewport);
+            } else {
+              konumSinir.extend(place.geometry.location);
+            }
+          });
+          harita.fitBounds(konumSinir);
+        });
+      }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByDbxiNsk8J_KIRG_jNSQDkTCOsRl5EaU&libraries=places&callback=haritaBasla"></script>
+  </body>
+</html>

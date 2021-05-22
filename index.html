@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>MyMap</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	
+    <!-- ek stiller -->
+    <link href="css/style.css" rel="stylesheet">
+
+   
+  </head>
+  
+  <body class="arkaplan">
+ <!--MENÜ ÇUBUĞU--(menü çubuğu için getbootstrap.com/component/navbar)-->
+ 
+ <header class="navbar navbar-inverse headerayarla"><!-- bu bir navbar manü çubuğunu kullanacağımı ve renginin navbar default olacağını söylüyor.-->
+  <div class="container"><!-- menü çubuğunun nasıl yayılacağını gösteriyor..-->
+ 
+    <div class="navbar-header"><!--bu div açma kapama kısmı ise yani akıllı tlf ,tabletlerde nasıl gösterileciğini düzenliyor-->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><!--toggle ve collapse javascripte fonksiyonlarını gösteren seçeneklerdir-->
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span><!--bu üç ikon çizgi sağlamaya yarıyor--javascripte çalışan bir kısımdır..-->
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> 
+
+      <a class="navbar-brand pad0 balikayar" href="index.html">
+	  <img src="resimler\balık.jpg"  title="ceylan Çakmar" width="50px" height="50px" class="img-circle"><!--circle yuvarlak olmasını sağlıyor-->
+	  
+	  </a>
+     <span class="navbar-brand ayar padTop20" href="index.html"><i>My</i><strong>Map</strong> </span>
+   </div>
+	
+
+    <!-- menüdeki bölümler -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav yaziayarla">
+      
+           <li><a class="yaziayarla"href="index.html">Anasayfa</a></li>
+	       
+		   <li><a class="yaziayarla"href="dokuman.html">Dökümanlar</a></li> 
+       
+		   <li><a class="yaziayarla"href="iletisim.html">İletişim</a></li>
+        
+      </ul>
+     
+     
+	  
+	 
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</header>
+ 
+ <!--SLİDER ÇUBUĞU-->
+  <div class="container">
+      <div class="row"> <!--birinci satır(satır old. belirtiyor)-->
+  
+			<div id="carousel-example-generic" class="carousel slide" data-interval="3000" data-ride="carousel">
+		     <!-- Indicators -->
+		      <ol class="carousel-indicators">
+			   <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+			   <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		       <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			   <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+		      </ol>
+
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+			  <div class="item active">
+			  <img class="sliderayarla" src="resimler\map4.jpg" >
+			  <div class="carousel-caption">
+				Dünyayı anlamak yetmez, onu değiştirmek gerekir.
+                Karl Marx
+			  </div>
+			</div>
+			<div class="item">
+			  <img class="sliderayarla" src="resimler\map6.jpg" >
+			  <div class="carousel-caption">
+				Elmas yontulmadan, insan da yanılmadan mükemmelleşemez.
+               Confucius
+			  </div>
+			 </div>
+			 <div class="item">
+			  <img class="sliderayarla" src="resimler\map2.png">
+			  <div class="carousel-caption">
+				Başlamak için en uygun zamanı beklersen hiç başlamayabilirsin;   Şimdi başla, şu anda bulunduğun yerden, elindekilerle başla.
+
+			  </div>
+			 </div>
+		   <div class="item">
+		  	  <img class="sliderayarla" src="resimler\farklı.jpg" >
+			  <div class="carousel-caption">
+				“Dünyada kesin olan tek şey geçmiştir, fakat üzerinde çalışmak zorunda olduğumuz her şey gelecektir.”
+              Auguste Comte
+			  </div>
+	       </div>
+			
+			
+			 </div>
+
+		  <!-- Controls -->
+		   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			 <span class="sr-only">Geri</span>
+		   </a>
+		   <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">ileri</span>
+		   </a>
+		  </div>
+  
+ 
+    </div>
+      <div class="row resimPad">
+        <div class="col-md-4 resimarasi">
+         <div class="thumbnail kutuayar ">
+            <img src="resimler/toplutasima.jpg">
+             <div class="caption">
+              <h3>Toplu Taşıma</h3>
+               <p>
+                  Harita,rotalar ve yol tarifleriyle birlikte toplu taşıma bilgilerini de sunan Toplu Taşıma görünümünü içeriyor. Toplu Taşıma, sunulduğu her şehre göre özelleştirildi. Böylelikle işaretleri kolaylıkla tanıyabilir ve en yakın metro istasyonu girişini veya otobüs durağını rahatlıkla bulabilirsiniz. 
+             </p> 
+            </div>
+         </div>
+       </div>
+	  <div class="col-md-4">
+         <div class="thumbnail kutuayar">
+            <img  src="resimler/navigasyon.jpg">
+             <div class="caption">
+              <h3>Sokak Navigasyon</h3>
+               <p>
+               
+               Harita, siz araba kullanırken veya yürürken, sokak sokak  yol tarifleriyle gideceğiniz yeri gösterir. Bir dönüşe girdiğinizde, görüntüleme açısı dinamik olarak değişerek, gittiğiniz yeri gösterir. Dönüşü kaçırsanız bile üzülmenize gerek kalmaz. Çünkü Harita, rotayı otomatik olarak yeniden belirler ve tahmini varış süresini günceller. Yol boyunca büyük tabelalar ve işaretler size doğru yönü gösterir ve oraya varmanızın ne kadar süreceğini söyler. Üstelik, ekranınız kilitli olsa bile.
+               </p>
+            </div>
+         </div>
+     </div>
+	 <div class="col-md-4">
+         <div class="thumbnail kutuayar resimarasi">
+            <img src="resimler/arama1.jpg">
+             <div class="caption">
+              <h3>Yerel Arama</h3>
+               <p>
+                  Haritaya koyduğunuz bir iğneye veya bir arama sonucuna dokunarak, söz konusu yer hakkında yararlı bilgilerin bulunduğu özel bir kartı görüntüleyebilirsiniz. Telefon numarası çevirmek, adres almak ve web siteleri bulmak için sadece dokunmanız yeter. 
+             </p> 
+            </div>
+         </div>
+       </div>
+        
+	
+		 
+		 
+   
+  
+ </div>
+ 
+ <footer class="padTop20 footerayarla"> <!--footer-->
+     <div class="row well">
+	   <div class="col-md-12 text-info renkayar">
+	    <strong>Copyright &copy; Ceylan Çakmar</strong>
+	   </div>
+	 </div>
+ 
+ </footer>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+ 
+  </body>
+</html>
+
+
+
+
+
